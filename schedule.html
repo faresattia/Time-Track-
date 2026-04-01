@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Generated Schedule</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>الجدول الأسبوعي</h1>
+
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>اليوم</th>
+          <th>الوقت</th>
+          <th>النشاط</th>
+          <th>النوع</th>
+        </tr>
+      </thead>
+      <tbody>
+       <script>
+
+const schedule = JSON.parse(localStorage.getItem("schedule"))
+
+const table = document.querySelector("tbody")
+
+schedule.forEach(day=>{
+
+day.sessions.forEach(s=>{
+
+const row = document.createElement("tr")
+
+row.innerHTML = `
+<td>${day.day}</td>
+<td>${s.start} - ${s.end}</td>
+<td>${s.task}</td>
+<td>${s.category}</td>
+`
+
+table.appendChild(row)
+
+})
+
+})
+
+</script>
+      </tbody>
+    </table>
+
+    <a href="/">ارجع لتعديل المدخلات</a>
+  </div>
+</body>
+</html>

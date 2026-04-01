@@ -1,0 +1,179 @@
+Student_ID,Name,Department,Year,Day,Activity_Type,Start_Time,End_Time,Description
+1,Ali Hassan,Computer Science,2,Sunday,Lecture,10:00,12:00,Web Development
+1,Ali Hassan,Computer Science,2,Sunday,Lecture,12:00,14:00,Web Development
+1,Ali Hassan,Computer Science,2,Sunday,Study,18:00,20:00,Review lessons / homework
+1,Ali Hassan,Computer Science,2,Sunday,Activity,21:00,22:00,Music practice
+1,Ali Hassan,Computer Science,2,Sunday,Break,22:00,23:00,Snack / Relaxation
+1,Ali Hassan,Computer Science,2,Sunday,Rest,23:00,07:00,Sleep / Night rest
+1,Ali Hassan,Computer Science,2,Monday,Lecture,08:00,10:00,Discrete Math
+1,Ali Hassan,Computer Science,2,Monday,Study,18:00,20:00,Review lessons / homework
+1,Ali Hassan,Computer Science,2,Monday,Activity,21:00,22:00,Music practice
+1,Ali Hassan,Computer Science,2,Monday,Break,22:00,23:00,Snack / Relaxation
+1,Ali Hassan,Computer Science,2,Monday,Rest,23:00,07:00,Sleep / Night rest
+1,Ali Hassan,Computer Science,2,Tuesday,Lecture,14:00,16:00,Data Structures
+1,Ali Hassan,Computer Science,2,Tuesday,Lecture,12:00,14:00,Discrete Math
+1,Ali Hassan,Computer Science,2,Tuesday,Study,18:00,20:00,Review lessons / homework
+1,Ali Hassan,Computer Science,2,Tuesday,Activity,21:00,22:00,Family time
+1,Ali Hassan,Computer Science,2,Tuesday,Break,22:00,23:00,Snack / Relaxation
+1,Ali Hassan,Computer Science,2,Tuesday,Rest,23:00,07:00,Sleep / Night rest
+1,Ali Hassan,Computer Science,2,Wednesday,Lecture,08:00,10:00,Computer Networks
+1,Ali Hassan,Computer Science,2,Wednesday,Lecture,14:00,16:00,Programming 101
+1,Ali Hassan,Computer Science,2,Wednesday,Study,15:00,17:00,Review lessons / homework
+1,Ali Hassan,Computer Science,2,Wednesday,Activity,18:00,19:00,Basketball
+1,Ali Hassan,Computer Science,2,Wednesday,Break,19:00,20:00,Snack / Relaxation
+1,Ali Hassan,Computer Science,2,Wednesday,Rest,23:00,07:00,Sleep / Night rest
+1,Ali Hassan,Computer Science,2,Thursday,Lecture,10:00,12:00,Discrete Math
+1,Ali Hassan,Computer Science,2,Thursday,Study,17:00,19:00,Review lessons / homework
+1,Ali Hassan,Computer Science,2,Thursday,Activity,20:00,21:00,Football
+1,Ali Hassan,Computer Science,2,Thursday,Break,21:00,22:00,Snack / Relaxation
+1,Ali Hassan,Computer Science,2,Thursday,Rest,23:00,07:00,Sleep / Night rest
+1,Ali Hassan,Computer Science,2,Friday,Study,18:00,20:00,Review lessons / homework
+1,Ali Hassan,Computer Science,2,Friday,Activity,21:00,22:00,Volunteering
+1,Ali Hassan,Computer Science,2,Friday,Break,22:00,23:00,Snack / Relaxation
+1,Ali Hassan,Computer Science,2,Friday,Rest,23:00,07:00,Sleep / Night rest
+1,Ali Hassan,Computer Science,2,Saturday,Study,18:00,20:00,Review lessons / homework
+1,Ali Hassan,Computer Science,2,Saturday,Activity,21:00,22:00,Running
+1,Ali Hassan,Computer Science,2,Saturday,Break,22:00,23:00,Snack / Relaxation
+1,Ali Hassan,Computer Science,2,Saturday,Rest,23:00,07:00,Sleep / Night rest
+2,Sara Ahmed,Information Systems,3,Sunday,Lecture,14:00,16:00,Machine Learning
+2,Sara Ahmed,Information Systems,3,Sunday,Lecture,10:00,12:00,Operating Systems
+2,Sara Ahmed,Information Systems,3,Sunday,Study,17:00,19:00,Review lessons / homework
+2,Sara Ahmed,Information Systems,3,Sunday,Activity,20:00,21:00,Basketball
+2,Sara Ahmed,Information Systems,3,Sunday,Break,21:00,22:00,Snack / Relaxation
+2,Sara Ahmed,Information Systems,3,Sunday,Rest,23:00,07:00,Sleep / Night rest
+2,Sara Ahmed,Information Systems,3,Monday,Lecture,12:00,14:00,AI Fundamentals
+2,Sara Ahmed,Information Systems,3,Monday,Study,17:00,19:00,Review lessons / homework
+2,Sara Ahmed,Information Systems,3,Monday,Activity,20:00,21:00,Running
+2,Sara Ahmed,Information Systems,3,Monday,Break,21:00,22:00,Snack / Relaxation
+2,Sara Ahmed,Information Systems,3,Monday,Rest,23:00,07:00,Sleep / Night rest
+2,Sara Ahmed,Information Systems,3,Tuesday,Lecture,10:00,12:00,Data Structures
+2,Sara Ahmed,Information Systems,3,Tuesday,Lecture,10:00,12:00,AI Fundamentals
+2,Sara Ahmed,Information Systems,3,Tuesday,Study,18:00,20:00,Review lessons / homework
+2,Sara Ahmed,Information Systems,3,Tuesday,Activity,21:00,22:00,Gym
+2,Sara Ahmed,Information Systems,3,Tuesday,Break,22:00,23:00,Snack / Relaxation
+2,Sara Ahmed,Information Systems,3,Tuesday,Rest,23:00,07:00,Sleep / Night rest
+2,Sara Ahmed,Information Systems,3,Wednesday,Lecture,14:00,16:00,Operating Systems
+2,Sara Ahmed,Information Systems,3,Wednesday,Lecture,10:00,12:00,Data Structures
+2,Sara Ahmed,Information Systems,3,Wednesday,Study,17:00,19:00,Review lessons / homework
+2,Sara Ahmed,Information Systems,3,Wednesday,Activity,20:00,21:00,Watching movies
+2,Sara Ahmed,Information Systems,3,Wednesday,Break,21:00,22:00,Snack / Relaxation
+2,Sara Ahmed,Information Systems,3,Wednesday,Rest,23:00,07:00,Sleep / Night rest
+2,Sara Ahmed,Information Systems,3,Thursday,Lecture,08:00,10:00,Database Systems
+2,Sara Ahmed,Information Systems,3,Thursday,Study,17:00,19:00,Review lessons / homework
+2,Sara Ahmed,Information Systems,3,Thursday,Activity,20:00,21:00,Gaming
+2,Sara Ahmed,Information Systems,3,Thursday,Break,21:00,22:00,Snack / Relaxation
+2,Sara Ahmed,Information Systems,3,Thursday,Rest,23:00,07:00,Sleep / Night rest
+2,Sara Ahmed,Information Systems,3,Friday,Study,15:00,17:00,Review lessons / homework
+2,Sara Ahmed,Information Systems,3,Friday,Activity,18:00,19:00,Basketball
+2,Sara Ahmed,Information Systems,3,Friday,Break,19:00,20:00,Snack / Relaxation
+2,Sara Ahmed,Information Systems,3,Friday,Rest,23:00,07:00,Sleep / Night rest
+2,Sara Ahmed,Information Systems,3,Saturday,Study,15:00,17:00,Review lessons / homework
+2,Sara Ahmed,Information Systems,3,Saturday,Activity,18:00,19:00,Gym
+2,Sara Ahmed,Information Systems,3,Saturday,Break,19:00,20:00,Snack / Relaxation
+2,Sara Ahmed,Information Systems,3,Saturday,Rest,23:00,07:00,Sleep / Night rest
+3,Omar Khaled,AI Engineering,1,Sunday,Lecture,12:00,14:00,Database Systems
+3,Omar Khaled,AI Engineering,1,Sunday,Lecture,08:00,10:00,Discrete Math
+3,Omar Khaled,AI Engineering,1,Sunday,Study,17:00,19:00,Review lessons / homework
+3,Omar Khaled,AI Engineering,1,Sunday,Activity,20:00,21:00,Coding practice
+3,Omar Khaled,AI Engineering,1,Sunday,Break,21:00,22:00,Snack / Relaxation
+3,Omar Khaled,AI Engineering,1,Sunday,Rest,23:00,07:00,Sleep / Night rest
+3,Omar Khaled,AI Engineering,1,Monday,Lecture,12:00,14:00,Data Structures
+3,Omar Khaled,AI Engineering,1,Monday,Study,16:00,18:00,Review lessons / homework
+3,Omar Khaled,AI Engineering,1,Monday,Activity,19:00,20:00,Running
+3,Omar Khaled,AI Engineering,1,Monday,Break,20:00,21:00,Snack / Relaxation
+3,Omar Khaled,AI Engineering,1,Monday,Rest,23:00,07:00,Sleep / Night rest
+3,Omar Khaled,AI Engineering,1,Tuesday,Lecture,10:00,12:00,Discrete Math
+3,Omar Khaled,AI Engineering,1,Tuesday,Study,16:00,18:00,Review lessons / homework
+3,Omar Khaled,AI Engineering,1,Tuesday,Activity,19:00,20:00,Gaming
+3,Omar Khaled,AI Engineering,1,Tuesday,Break,20:00,21:00,Snack / Relaxation
+3,Omar Khaled,AI Engineering,1,Tuesday,Rest,23:00,07:00,Sleep / Night rest
+3,Omar Khaled,AI Engineering,1,Wednesday,Lecture,14:00,16:00,Web Development
+3,Omar Khaled,AI Engineering,1,Wednesday,Study,18:00,20:00,Review lessons / homework
+3,Omar Khaled,AI Engineering,1,Wednesday,Activity,21:00,22:00,Basketball
+3,Omar Khaled,AI Engineering,1,Wednesday,Break,22:00,23:00,Snack / Relaxation
+3,Omar Khaled,AI Engineering,1,Wednesday,Rest,23:00,07:00,Sleep / Night rest
+3,Omar Khaled,AI Engineering,1,Thursday,Lecture,12:00,14:00,Operating Systems
+3,Omar Khaled,AI Engineering,1,Thursday,Study,17:00,19:00,Review lessons / homework
+3,Omar Khaled,AI Engineering,1,Thursday,Activity,20:00,21:00,Gaming
+3,Omar Khaled,AI Engineering,1,Thursday,Break,21:00,22:00,Snack / Relaxation
+3,Omar Khaled,AI Engineering,1,Thursday,Rest,23:00,07:00,Sleep / Night rest
+3,Omar Khaled,AI Engineering,1,Friday,Study,18:00,20:00,Review lessons / homework
+3,Omar Khaled,AI Engineering,1,Friday,Activity,21:00,22:00,Coding practice
+3,Omar Khaled,AI Engineering,1,Friday,Break,22:00,23:00,Snack / Relaxation
+3,Omar Khaled,AI Engineering,1,Friday,Rest,23:00,07:00,Sleep / Night rest
+3,Omar Khaled,AI Engineering,1,Saturday,Study,16:00,18:00,Review lessons / homework
+3,Omar Khaled,AI Engineering,1,Saturday,Activity,19:00,20:00,Watching movies
+3,Omar Khaled,AI Engineering,1,Saturday,Break,20:00,21:00,Snack / Relaxation
+3,Omar Khaled,AI Engineering,1,Saturday,Rest,23:00,07:00,Sleep / Night rest
+4,Mona Youssef,Data Science,4,Sunday,Lecture,08:00,10:00,Database Systems
+4,Mona Youssef,Data Science,4,Sunday,Lecture,10:00,12:00,Data Structures
+4,Mona Youssef,Data Science,4,Sunday,Study,15:00,17:00,Review lessons / homework
+4,Mona Youssef,Data Science,4,Sunday,Activity,18:00,19:00,Reading
+4,Mona Youssef,Data Science,4,Sunday,Break,19:00,20:00,Snack / Relaxation
+4,Mona Youssef,Data Science,4,Sunday,Rest,23:00,07:00,Sleep / Night rest
+4,Mona Youssef,Data Science,4,Monday,Lecture,10:00,12:00,Programming 101
+4,Mona Youssef,Data Science,4,Monday,Lecture,10:00,12:00,Machine Learning
+4,Mona Youssef,Data Science,4,Monday,Study,18:00,20:00,Review lessons / homework
+4,Mona Youssef,Data Science,4,Monday,Activity,21:00,22:00,Basketball
+4,Mona Youssef,Data Science,4,Monday,Break,22:00,23:00,Snack / Relaxation
+4,Mona Youssef,Data Science,4,Monday,Rest,23:00,07:00,Sleep / Night rest
+4,Mona Youssef,Data Science,4,Tuesday,Lecture,14:00,16:00,Operating Systems
+4,Mona Youssef,Data Science,4,Tuesday,Study,16:00,18:00,Review lessons / homework
+4,Mona Youssef,Data Science,4,Tuesday,Activity,19:00,20:00,Music practice
+4,Mona Youssef,Data Science,4,Tuesday,Break,20:00,21:00,Snack / Relaxation
+4,Mona Youssef,Data Science,4,Tuesday,Rest,23:00,07:00,Sleep / Night rest
+4,Mona Youssef,Data Science,4,Wednesday,Lecture,08:00,10:00,Operating Systems
+4,Mona Youssef,Data Science,4,Wednesday,Lecture,08:00,10:00,Discrete Math
+4,Mona Youssef,Data Science,4,Wednesday,Study,18:00,20:00,Review lessons / homework
+4,Mona Youssef,Data Science,4,Wednesday,Activity,21:00,22:00,Volunteering
+4,Mona Youssef,Data Science,4,Wednesday,Break,22:00,23:00,Snack / Relaxation
+4,Mona Youssef,Data Science,4,Wednesday,Rest,23:00,07:00,Sleep / Night rest
+4,Mona Youssef,Data Science,4,Thursday,Lecture,12:00,14:00,Programming 101
+4,Mona Youssef,Data Science,4,Thursday,Lecture,10:00,12:00,Machine Learning
+4,Mona Youssef,Data Science,4,Thursday,Study,18:00,20:00,Review lessons / homework
+4,Mona Youssef,Data Science,4,Thursday,Activity,21:00,22:00,Gym
+4,Mona Youssef,Data Science,4,Thursday,Break,22:00,23:00,Snack / Relaxation
+4,Mona Youssef,Data Science,4,Thursday,Rest,23:00,07:00,Sleep / Night rest
+4,Mona Youssef,Data Science,4,Friday,Study,17:00,19:00,Review lessons / homework
+4,Mona Youssef,Data Science,4,Friday,Activity,20:00,21:00,Basketball
+4,Mona Youssef,Data Science,4,Friday,Break,21:00,22:00,Snack / Relaxation
+4,Mona Youssef,Data Science,4,Friday,Rest,23:00,07:00,Sleep / Night rest
+4,Mona Youssef,Data Science,4,Saturday,Study,18:00,20:00,Review lessons / homework
+4,Mona Youssef,Data Science,4,Saturday,Activity,21:00,22:00,Volunteering
+4,Mona Youssef,Data Science,4,Saturday,Break,22:00,23:00,Snack / Relaxation
+4,Mona Youssef,Data Science,4,Saturday,Rest,23:00,07:00,Sleep / Night rest
+5,Youssef Adel,Software Engineering,2,Sunday,Lecture,12:00,14:00,Computer Networks
+5,Youssef Adel,Software Engineering,2,Sunday,Lecture,10:00,12:00,Computer Networks
+5,Youssef Adel,Software Engineering,2,Sunday,Study,18:00,20:00,Review lessons / homework
+5,Youssef Adel,Software Engineering,2,Sunday,Activity,21:00,22:00,Gaming
+5,Youssef Adel,Software Engineering,2,Sunday,Break,22:00,23:00,Snack / Relaxation
+5,Youssef Adel,Software Engineering,2,Sunday,Rest,23:00,07:00,Sleep / Night rest
+5,Youssef Adel,Software Engineering,2,Monday,Lecture,08:00,10:00,Discrete Math
+5,Youssef Adel,Software Engineering,2,Monday,Lecture,14:00,16:00,Machine Learning
+5,Youssef Adel,Software Engineering,2,Monday,Study,17:00,19:00,Review lessons / homework
+5,Youssef Adel,Software Engineering,2,Monday,Activity,20:00,21:00,Music practice
+5,Youssef Adel,Software Engineering,2,Monday,Break,21:00,22:00,Snack / Relaxation
+5,Youssef Adel,Software Engineering,2,Monday,Rest,23:00,07:00,Sleep / Night rest
+5,Youssef Adel,Software Engineering,2,Tuesday,Lecture,10:00,12:00,Database Systems
+5,Youssef Adel,Software Engineering,2,Tuesday,Study,16:00,18:00,Review lessons / homework
+5,Youssef Adel,Software Engineering,2,Tuesday,Activity,19:00,20:00,Football
+5,Youssef Adel,Software Engineering,2,Tuesday,Break,20:00,21:00,Snack / Relaxation
+5,Youssef Adel,Software Engineering,2,Tuesday,Rest,23:00,07:00,Sleep / Night rest
+5,Youssef Adel,Software Engineering,2,Wednesday,Lecture,08:00,10:00,Web Development
+5,Youssef Adel,Software Engineering,2,Wednesday,Study,16:00,18:00,Review lessons / homework
+5,Youssef Adel,Software Engineering,2,Wednesday,Activity,19:00,20:00,Volunteering
+5,Youssef Adel,Software Engineering,2,Wednesday,Break,20:00,21:00,Snack / Relaxation
+5,Youssef Adel,Software Engineering,2,Wednesday,Rest,23:00,07:00,Sleep / Night rest
+5,Youssef Adel,Software Engineering,2,Thursday,Lecture,12:00,14:00,Computer Networks
+5,Youssef Adel,Software Engineering,2,Thursday,Study,15:00,17:00,Review lessons / homework
+5,Youssef Adel,Software Engineering,2,Thursday,Activity,18:00,19:00,Gaming
+5,Youssef Adel,Software Engineering,2,Thursday,Break,19:00,20:00,Snack / Relaxation
+5,Youssef Adel,Software Engineering,2,Thursday,Rest,23:00,07:00,Sleep / Night rest
+5,Youssef Adel,Software Engineering,2,Friday,Study,15:00,17:00,Review lessons / homework
+5,Youssef Adel,Software Engineering,2,Friday,Activity,18:00,19:00,Gaming
+5,Youssef Adel,Software Engineering,2,Friday,Break,19:00,20:00,Snack / Relaxation
+5,Youssef Adel,Software Engineering,2,Friday,Rest,23:00,07:00,Sleep / Night rest
+5,Youssef Adel,Software Engineering,2,Saturday,Study,16:00,18:00,Review lessons / homework
+5,Youssef Adel,Software Engineering,2,Saturday,Activity,19:00,20:00,Gaming
+5,Youssef Adel,Software Engineering,2,Saturday,Break,20:00,21:00,Snack / Relaxation
+5,Youssef Adel,Software Engineering,2,Saturday,Rest,23:00,07:00,Sleep / Night rest
