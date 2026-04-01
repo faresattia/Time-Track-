@@ -21,7 +21,7 @@ app.add_middleware(
 )
 app.mount("/static", StaticFiles(directory="."), name="static")
 
-# 2. تحميل الموديلات (تأكد من وجود مجلد models)
+# 2. تحميل الموديلات 
 classifier = joblib.load("models/classifier.pkl")
 regressor = joblib.load("models/regressor.pkl")
 vectorizer = joblib.load("models/vectorizer.pkl")
@@ -98,7 +98,6 @@ async def predict_task(data: TaskInput):
 @app.get("/")
 async def read_index():
     return FileResponse('index.html')
-# أضف هذا المسار ليتمكن السيرفر من قراءة صفحة الجدول
 @app.get("/schedule")
 async def read_schedule():
     return FileResponse('schedule.html')

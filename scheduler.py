@@ -24,7 +24,6 @@ def allocate(duration_hours):
     return schedule
 
 
-# ========== أضف الدالة الجديدة هنا ==========
 def allocate_weekly(duration_hours, start_day="Monday"):
     days_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     current_day_index = days_order.index(start_day)  # ← أضف السطر ده

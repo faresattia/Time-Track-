@@ -45,7 +45,6 @@ document.getElementById("mainForm").addEventListener("submit", async function(e)
         });
     }
 
-    // تأكد إن فيه داتا تتبعت
     if (tasks.length === 0) {
         alert("Please add some lectures or hobbies!");
         return;
@@ -66,7 +65,7 @@ document.getElementById("mainForm").addEventListener("submit", async function(e)
         // تخزين البيانات
         localStorage.setItem("schedule", JSON.stringify(data.weekly_schedule));
 
-        // الانتقال للصفحة (تأكد من اسم الملف صح عندك)
+        // الانتقال للصفحة 
         window.location.href = "/schedule"; 
 
     } catch (error) {
