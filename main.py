@@ -8,6 +8,7 @@ import os
 from datetime import datetime, timedelta
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from chatbot_engine import get_chatbot_response
 
 app = FastAPI()
 
@@ -94,6 +95,14 @@ async def predict_task(data: TaskInput):
         })
 
     return {"weekly_schedule": weekly_schedule}
+# main.py
+
+
+# داخل الـ Endpoint الخاص بالشات
+@app.post("/chat")
+async def chat(msg: str):
+    response = get_chatbot_response(msg)
+    return {"reply": response}
 
 @app.get("/")
 async def read_index():

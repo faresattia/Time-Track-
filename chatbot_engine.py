@@ -230,7 +230,11 @@ def schedule_chatbot():
 schedule_chatbot()
 
 # %%
-
+# chatbot_engine.py
+def get_chatbot_response(user_input):
+    # هنا تضع الكود الخاص بالتحميل والمعالجة (preprocessing)
+    # ثم كود التوقع من الموديل
+    return "الرد المناسب من البوت"
 
 # %%
 
