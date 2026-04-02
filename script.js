@@ -20,24 +20,21 @@ function generateLecturesFields() {
     }
 }
 
-// ربط الأحداث
 document.getElementById('lec_count').addEventListener('change', generateLecturesFields);
 
-// الحدث الرئيسي عند الضغط على الزرار
+// --- 1. جزء توليد الجدول (Predict) ---
 document.getElementById("mainForm").addEventListener("submit", async function(e) {
-    e.preventDefault(); // منع الريفرش نهائياً
+    e.preventDefault(); 
     
     console.log("Starting prediction...");
     const tasks = [];
 
-    // 1. جمع المحاضرات
     document.querySelectorAll(".lecture-item").forEach(el => {
         const day = el.querySelector(".lec-day").value;
         const subject = el.querySelector(".lec-subject").value;
         tasks.push(`Lecture: ${subject} on ${day}`);
     });
 
-    // 2. جمع الهوايات (Interests)
     const interests = document.querySelector('input[name="interests"]').value;
     if (interests) {
         interests.split(',').forEach(item => {
@@ -51,6 +48,7 @@ document.getElementById("mainForm").addEventListener("submit", async function(e)
     }
 
     try {
+        // تم توحيد البورت ليكون 8001 (أو حسب تشغيلك للسيرفر)
         const response = await fetch("http://127.0.0.1:8001/predict", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -58,14 +56,8 @@ document.getElementById("mainForm").addEventListener("submit", async function(e)
         });
 
         if (!response.ok) throw new Error("Server error");
-
         const data = await response.json();
-        console.log("Data received:", data);
-
-        // تخزين البيانات
         localStorage.setItem("schedule", JSON.stringify(data.weekly_schedule));
-
-        // الانتقال للصفحة 
         window.location.href = "/schedule"; 
 
     } catch (error) {
@@ -74,6 +66,7 @@ document.getElementById("mainForm").addEventListener("submit", async function(e)
     }
 });
 
+// --- 2. جزء الشات بوت (Chatbot) ---
 const chatWindow = document.getElementById('chatWindow');
 const chatTrigger = document.getElementById('chatTrigger');
 const closeChat = document.getElementById('closeChat');
@@ -81,7 +74,6 @@ const sendBtn = document.getElementById('sendBtn');
 const userInput = document.getElementById('userInput');
 const chatBody = document.getElementById('chatBody');
 
-// فتح وإغلاق الشات
 function toggleChat() {
     chatWindow.classList.toggle('open');
     if (chatWindow.classList.contains('open')) {
@@ -95,18 +87,18 @@ function toggleChat() {
 chatTrigger.addEventListener('click', toggleChat);
 closeChat.addEventListener('click', toggleChat);
 
-// إرسال الرسالة
-async function sendMessage() {
+async function sendMessage(e) {
+    if (e) e.preventDefault(); // هام جداً لمنع أي Refresh للصفحة
+
     const text = userInput.value.trim();
     if (!text) return;
 
-    // إضافة رسالة المستخدم للواجهة
     appendMessage(text, 'user');
     userInput.value = '';
 
     try {
-        // الربط مع سيرفر Uvicorn (تأكد من العنوان والـ Port)
-        const response = await fetch('http://127.0.0.1:8000/chat', {
+        // *** تم تغيير البورت هنا من 8000 إلى 8001 ليتطابق مع السيرفر ***
+        const response = await fetch('http://127.0.0.1:8001/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ "msg": text })
@@ -115,7 +107,7 @@ async function sendMessage() {
         const data = await response.json();
         appendMessage(data.reply, 'bot');
     } catch (error) {
-        appendMessage('خطأ: تأكد من تشغيل السيرفر (Uvicorn)', 'bot');
+        appendMessage('خطأ: تأكد من تشغيل السيرفر على بورت 8001', 'bot');
     }
 }
 
@@ -127,10 +119,12 @@ function appendMessage(text, sender) {
     chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-sendBtn.addEventListener('click', sendMessage);
+// تعديل طريقة ربط الأحداث لضمان عدم حدوث تداخل
+sendBtn.addEventListener('click', (e) => sendMessage(e));
 userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendMessage();
+    if (e.key === 'Enter') {
+        sendMessage(e);
+    }
 });
 
-// تشغيل أولي
 generateLecturesFields();
