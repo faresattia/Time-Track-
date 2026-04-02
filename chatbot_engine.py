@@ -1,242 +1,66 @@
-# %%
 import pandas as pd
+import joblib
 import re
-
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
-
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.svm import LinearSVC
-from sklearn.ensemble import RandomForestClassifier
-
-from sklearn.metrics import accuracy_score
-
 import spacy
 
-# %%
-nlp = spacy.load("en_core_web_sm")
+# تحميل الموديل اللغوي لـ spacy
+try:
+    nlp = spacy.load("en_core_web_sm")
+except:
+    # في حال لم يتم تحميله برمجياً سابقاً
+    import os
+    os.system("python -m spacy download en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
-# %%
+# تحميل البيانات والموديلات
+# تأكد أن المسارات صحيحة بالنسبة لمجلد المشروع
 df = pd.read_csv("student_weekly_schedule_dataset.csv")
+classifier = joblib.load("models/classifier.pkl")
+vectorizer = joblib.load("models/vectorizer.pkl")
 
-print(df.head())
-
-# %%
 def clean_text(text):
+    text = text.lower().strip()
+    return re.sub(r"[^\w\s]", "", text)
 
-    text = str(text).lower()
-
-    text = re.sub(r'[^a-zA-Z\s]', '', text)
-
-    return text
-
-df["clean_description"] = df["Description"].apply(clean_text)
-
-# %%
-vectorizer = TfidfVectorizer(
-    stop_words="english",
-    max_features=3000
-)
-
-X = vectorizer.fit_transform(df["clean_description"])
-
-y = df["Activity_Type"]
-
-# %%
-X_train, X_test, y_train, y_test = train_test_split(
-
-    X,
-    y,
-    test_size=0.2,
-    random_state=42
-
-)
-
-# %%
-model_lr = LogisticRegression(max_iter=1000)
-
-model_lr.fit(X_train, y_train)
-
-# %%
-model_nb = MultinomialNB()
-
-model_nb.fit(X_train, y_train)
-
-# %%
-model_svm = LinearSVC()
-
-model_svm.fit(X_train, y_train)
-
-# %%
-model_rf = RandomForestClassifier()
-
-model_rf.fit(X_train, y_train)
-
-# %%
-pred_lr = model_lr.predict(X_test)
-pred_nb = model_nb.predict(X_test)
-pred_svm = model_svm.predict(X_test)
-pred_rf = model_rf.predict(X_test)
-
-print("Logistic Regression:", accuracy_score(y_test, pred_lr))
-print("Naive Bayes:", accuracy_score(y_test, pred_nb))
-print("SVM:", accuracy_score(y_test, pred_svm))
-print("Random Forest:", accuracy_score(y_test, pred_rf))
-
-# %%
-def extract_day(text):
-
-    doc = nlp(text)
-
-    days = [
-        "monday",
-        "tuesday",
-        "wednesday",
-        "thursday",
-        "friday",
-        "saturday",
-        "sunday"
-    ]
-
+def get_chatbot_response(user_input):
+    """
+    الدالة الأساسية التي تستقبل رسالة المستخدم وتعيد الرد
+    """
+    user_input_cleaned = clean_text(user_input)
+    
+    # 1. تحليل النية (Intent) باستخدام spaCy
+    doc = nlp(user_input_cleaned)
+    
+    # البحث عن أيام الأسبوع في جملة المستخدم
+    days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+    found_day = None
     for token in doc:
-
-        if token.text.lower() in days:
-
-            return token.text.lower()
-
-    return None
-
-# %%
-from datetime import datetime
-
-# %%
-def get_today():
-
-    today = datetime.today().strftime("%A").lower()
-
-    return today
-
-# %%
-days = [
-"sunday",
-"monday",
-"tuesday",
-"wednesday",
-"thursday",
-"friday",
-"saturday"
-]
-
-def get_tomorrow():
-
-    today = datetime.today().strftime("%A").lower()
-
-    index = days.index(today)
-
-    tomorrow = days[(index + 1) % 7]
-
-    return tomorrow
-
-# %%
-def next_activity():
-
-    now = datetime.now().hour
-
-    results = df[df["Start_Time"] > now]
-
-    if len(results) > 0:
-
-        next_row = results.iloc[0]
-
-        return next_row
-
-    return None
-
-# %%
-def schedule_chatbot():
-
-    print("Smart Student Schedule Bot")
-    print("Ask about your schedule")
-    print("Type exit to stop")
-
-    while True:
-
-        user = input("You: ").lower()
-
-
-        if user == "exit":
-
-            print("Bot: Goodbye")
-
+        if token.text in days:
+            found_day = token.text.capitalize()
             break
 
-
-        user_clean = clean_text(user)
-
-        user_vec = vectorizer.transform([user_clean])
-
-        prediction = model_svm.predict(user_vec)[0]
-
-
-        if "today" in user:
-
-            day = get_today()
-
-        elif "tomorrow" in user:
-
-            day = get_tomorrow()
-
+    # 2. إذا كان المستخدم يسأل عن يوم محدد
+    if found_day:
+        results = df[df["Day"] == found_day]
+        if not results.empty:
+            response = f"Your schedule for {found_day} is: \n"
+            for _, row in results.iterrows():
+                response += f"- {row['Start_Time']} to {row['End_Time']}: {row['Description']} ({row['Activity_Type']})\n"
+            return response
         else:
+            return f"I couldn't find any activities scheduled for {found_day}."
 
-            day = extract_day(user)
-
-
-        if "next" in user:
-
-            nxt = next_activity()
-
-            if nxt is not None:
-
-                print("Bot: Your next activity is", nxt["Activity_Type"])
-
-            else:
-
-                print("Bot: No upcoming activity")
-
-            continue
-
-
-        if day:
-
-            results = df[df["Day"].str.lower() == day]
-
-
-            if len(results) == 0:
-
-                print("Bot: No schedule found")
-
-            else:
-
-                print("Bot: Your schedule on", day)
-
-                print(results[["Activity_Type","Start_Time","End_Time"]])
-
+    # 3. إذا لم يحدد يوماً، نستخدم الموديل لتصنيف نوع النشاط الذي يسأل عنه
+    else:
+        vector = vectorizer.transform([user_input_cleaned])
+        prediction = classifier.predict(vector)[0]
+        
+        # ردود ذكية بناءً على التصنيف
+        if prediction == "Study":
+            return "It seems you are asking about study sessions. You can ask me 'What is my schedule on Monday?' to see your plan."
+        elif prediction == "Lecture":
+            return "Are you looking for your lectures? Tell me which day you want to check."
+        elif prediction == "Rest":
+            return "Taking a break is important! Do you want to know when your next rest period is? Just specify the day."
         else:
-
-            print("Bot: This activity looks like:", prediction)
-
-# %%
-schedule_chatbot()
-
-# %%
-# chatbot_engine.py
-def get_chatbot_response(user_input):
-    # هنا تضع الكود الخاص بالتحميل والمعالجة (preprocessing)
-    # ثم كود التوقع من الموديل
-    return "الرد المناسب من البوت"
-
-# %%
-
-
-
+            return f"I think you are talking about {prediction}. Could you please specify a day so I can give you details from your schedule?"

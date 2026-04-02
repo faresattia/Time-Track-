@@ -8,7 +8,8 @@ import os
 from datetime import datetime, timedelta
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from chatbot_engine import get_chatbot_response
+# استيراد الدالة من ملفك الجديد
+from chatbot_engine import get_chatbot_response 
 
 app = FastAPI()
 
@@ -20,26 +21,35 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# تأكد أن مجلد static يحتوي على ملفات الـ CSS والـ JS
 app.mount("/static", StaticFiles(directory="."), name="static")
 
 # 2. تحميل الموديلات 
+# ملاحظة: تأكد من وجود مجلد models وبه الملفات المطلوبة
 classifier = joblib.load("models/classifier.pkl")
 regressor = joblib.load("models/regressor.pkl")
 vectorizer = joblib.load("models/vectorizer.pkl")
 
+# --- النماذج (Models) لبيانات الدخول ---
+class TaskInput(BaseModel):
+    tasks: list[str]
+
+class Msg(BaseModel): # تعريفه ضروري لكي يعمل الـ Chat
+    msg: str
+
+# --- الدوال المساعدة ---
 def clean_text(text: str):
     text = text.lower().strip()
     return re.sub(r"[^\w\s]", "", text)
 
-# 3. دالة توزيع المهام بناءً على الوقت المتوقع من AI
 def build_ai_day_schedule(tasks_with_ai, start_hour=8):
     sessions = []
     current_time = datetime.strptime(f"{start_hour}:00", "%H:%M")
     
     for task in tasks_with_ai:
-        # استخدام الوقت المتوقع من Regressor (بالدقائق)
         duration = int(task["predicted_duration"])
-        duration = max(30, min(duration, 180)) # ضمان وقت منطقي بين 30 و 180 دقيقة
+        duration = max(30, min(duration, 180)) 
         
         start_str = current_time.strftime("%H:%M")
         end_time = current_time + timedelta(minutes=duration)
@@ -51,13 +61,19 @@ def build_ai_day_schedule(tasks_with_ai, start_hour=8):
             "start": start_str,
             "end": end_str
         })
-        # إضافة فجوة 30 دقيقة بين المهام
         current_time = end_time + timedelta(minutes=30)
         
     return sessions
 
-class TaskInput(BaseModel):
-    tasks: list[str]
+# --- المسارات (Endpoints) ---
+
+@app.get("/")
+async def read_index():
+    return FileResponse('index.html')
+
+@app.get("/schedule")
+async def read_schedule():
+    return FileResponse('schedule.html')
 
 @app.post("/predict")
 async def predict_task(data: TaskInput):
@@ -66,7 +82,6 @@ async def predict_task(data: TaskInput):
         cleaned = clean_text(task_desc)
         vector = vectorizer.transform([cleaned])
         
-        # التوقع بالنوع والمدة
         category = classifier.predict(vector)[0]
         duration = regressor.predict(vector)[0]
         
@@ -76,13 +91,10 @@ async def predict_task(data: TaskInput):
             "predicted_duration": duration
         })
 
-    # توليد جدول لـ 7 أيام
     weekly_schedule = []
     today = datetime.now()
     for i in range(7):
         actual_date = today + timedelta(days=i)
-        
-        # خلط المهام يومياً للتنوع
         shuffled = tasks_details.copy()
         random.seed(i)
         random.shuffle(shuffled)
@@ -95,18 +107,13 @@ async def predict_task(data: TaskInput):
         })
 
     return {"weekly_schedule": weekly_schedule}
-# main.py
 
-
-# داخل الـ Endpoint الخاص بالشات
 @app.post("/chat")
-async def chat(msg: str):
-    response = get_chatbot_response(msg)
+async def chat(input_data: Msg):
+    # استخدام الدالة المستوردة من chatbot_engine.py
+    try:
+        response = get_chatbot_response(input_data.msg)
+    except Exception as e:
+        response = f"عذراً، حدث خطأ في محرك الشات: {str(e)}"
+    
     return {"reply": response}
-
-@app.get("/")
-async def read_index():
-    return FileResponse('index.html')
-@app.get("/schedule")
-async def read_schedule():
-    return FileResponse('schedule.html')
