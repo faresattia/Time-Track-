@@ -74,5 +74,63 @@ document.getElementById("mainForm").addEventListener("submit", async function(e)
     }
 });
 
+const chatWindow = document.getElementById('chatWindow');
+const chatTrigger = document.getElementById('chatTrigger');
+const closeChat = document.getElementById('closeChat');
+const sendBtn = document.getElementById('sendBtn');
+const userInput = document.getElementById('userInput');
+const chatBody = document.getElementById('chatBody');
+
+// فتح وإغلاق الشات
+function toggleChat() {
+    chatWindow.classList.toggle('open');
+    if (chatWindow.classList.contains('open')) {
+        chatTrigger.innerHTML = '×';
+        userInput.focus();
+    } else {
+        chatTrigger.innerHTML = '💬';
+    }
+}
+
+chatTrigger.addEventListener('click', toggleChat);
+closeChat.addEventListener('click', toggleChat);
+
+// إرسال الرسالة
+async function sendMessage() {
+    const text = userInput.value.trim();
+    if (!text) return;
+
+    // إضافة رسالة المستخدم للواجهة
+    appendMessage(text, 'user');
+    userInput.value = '';
+
+    try {
+        // الربط مع سيرفر Uvicorn (تأكد من العنوان والـ Port)
+        const response = await fetch('http://127.0.0.1:8000/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ "msg": text })
+        });
+
+        const data = await response.json();
+        appendMessage(data.reply, 'bot');
+    } catch (error) {
+        appendMessage('خطأ: تأكد من تشغيل السيرفر (Uvicorn)', 'bot');
+    }
+}
+
+function appendMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', sender);
+    msgDiv.innerText = text;
+    chatBody.appendChild(msgDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+sendBtn.addEventListener('click', sendMessage);
+userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
 // تشغيل أولي
 generateLecturesFields();

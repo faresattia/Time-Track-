@@ -18,6 +18,48 @@
 
       <div id="lectures_container">
       </div>
+      <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Track Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-content">
+        <h1>مرحباً بك في مشروع Time Track</h1>
+        <p>استخدم الشات بوت في الزاوية للسؤال عن جدولك.</p>
+    </div>
+
+    <div class="chat-widget-container">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>مساعد جامعة الدلتا</span>
+                <button class="close-btn" id="closeChat">×</button>
+            </div>
+            
+            <div class="chat-body" id="chatBody">
+                <div class="message bot">
+                    مرحباً! أنا المساعد الذكي الخاص بك. كيف يمكنني مساعدتك اليوم؟
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="userInput" placeholder="اكتب رسالتك هنا...">
+                <button id="sendBtn">إرسال</button>
+            </div>
+        </div>
+
+        <button class="chat-trigger-btn" id="chatTrigger">
+            💬
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
       <!-- <h3>خطة المذاكرة (المواد وساعات الأسبوع)</h3>
       <label>عدد المواد:</label>
